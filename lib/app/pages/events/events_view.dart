@@ -5,7 +5,7 @@ import 'package:hnh/app/pages/events/events_controller.dart';
 import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_authentication_repository.dart';
 import 'package:hnh/data/repositories/data_event_repository.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class EventsPage extends View {
   EventsPage({Key key, this.title}) : super(key: key);
@@ -27,9 +27,9 @@ class _EventsPageView extends ViewState<EventsPage, EventsController> {
         key: globalKey,
         drawer: Drawer(elevation: 8.0, child: HHHConstants.drawer),
         appBar: appBar,
-        body: ModalProgressHUD(
+        body: LoadingOverlay(
             child: getBody(),
-            inAsyncCall: controller.isLoading,
+            isLoading: controller.isLoading,
             color: UIConstants.progressBarColor,
             opacity: UIConstants.progressBarOpacity));
   }

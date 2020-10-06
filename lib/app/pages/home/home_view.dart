@@ -6,7 +6,7 @@ import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_authentication_repository.dart';
 import 'package:hnh/data/repositories/data_hhh_repository.dart';
 import 'package:hnh/data/repositories/data_sponsor_repository.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class HomePage extends View {
   HomePage({Key key, this.title}) : super(key: key);
@@ -28,9 +28,9 @@ class HomePageView extends ViewState<HomePage, HomeController> {
       key: globalKey,
       drawer: Drawer(elevation: 8.0, child: HHHConstants.drawer),
       appBar: appBar,
-      body: ModalProgressHUD(
+      body: LoadingOverlay(
           child: getbody(),
-          inAsyncCall: controller.isLoading,
+          isLoading: controller.isLoading,
           opacity: UIConstants.progressBarOpacity,
           color: UIConstants.progressBarColor),
     );

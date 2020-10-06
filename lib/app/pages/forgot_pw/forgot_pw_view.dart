@@ -3,7 +3,7 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:hnh/app/pages/forgot_pw/forgot_pw_controller.dart';
 import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_authentication_repository.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class ForgotPwPage extends View {
   ForgotPwPage({Key key, this.title}) : super(key: key);
@@ -24,9 +24,9 @@ class _ForgotPwPageView extends ViewState<ForgotPwPage, ForgotPwController> {
 
   @override
   Widget buildPage() {
-    return ModalProgressHUD(
+    return LoadingOverlay(
         child: body,
-        inAsyncCall: _controller.isLoading,
+        isLoading: _controller.isLoading,
         color: UIConstants.progressBarColor,
         opacity: UIConstants.progressBarOpacity);
   }

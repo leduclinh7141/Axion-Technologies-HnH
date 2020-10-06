@@ -5,7 +5,7 @@ import 'package:hnh/app/components/inputField.dart';
 import 'package:hnh/app/pages/login/login_controller.dart';
 import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_authentication_repository.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class LoginPage extends View {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -33,12 +33,12 @@ class LoginPageView extends ViewState<LoginPage, LoginController> {
 
   @override
   Widget buildPage() {
-    // ModalProgressHUD wraps the entire body with a loading using the controller.isLoading
+    // LoadingOverlay wraps the entire body with a loading using the controller.isLoading
     return Scaffold(
         key: globalKey,
-        body: ModalProgressHUD(
+        body: LoadingOverlay(
             child: body,
-            inAsyncCall: controller.isLoading,
+            isLoading: true,
             color: UIConstants.progressBarColor,
             opacity: UIConstants.progressBarOpacity));
   }

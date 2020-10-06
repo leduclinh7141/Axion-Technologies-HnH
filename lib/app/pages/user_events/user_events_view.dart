@@ -6,7 +6,7 @@ import 'package:hnh/app/pages/user_events/user_events_controller.dart';
 import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_event_repository.dart';
 import 'package:hnh/domain/entities/user.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class UserEventsPage extends View {
   UserEventsPage(routeObserver, {Key key, this.user})
@@ -28,9 +28,9 @@ class _UserEventsPageView
         key: globalKey,
         drawer: Drawer(elevation: 8.0, child: HHHConstants.drawer),
         appBar: appBar,
-        body: ModalProgressHUD(
+        body: LoadingOverlay(
             child: getBody(),
-            inAsyncCall: controller.isLoading,
+            isLoading: controller.isLoading,
             color: UIConstants.progressBarColor,
             opacity: UIConstants.progressBarOpacity));
   }

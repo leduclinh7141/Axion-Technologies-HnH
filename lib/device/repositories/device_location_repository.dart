@@ -33,7 +33,8 @@ class DeviceLocationRepository implements LocationRepository {
   @override
   void enableDevice() async {
     bool enabled = await _locationDevice.serviceEnabled();
-    bool hasPermission = await _locationDevice.hasPermission();
+    bool hasPermission = false;
+    // await _locationDevice.hasPermission();
     if (!enabled) {
       await _locationDevice.requestService();
     }

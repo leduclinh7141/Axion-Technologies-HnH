@@ -8,7 +8,7 @@ import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_event_repository.dart';
 import 'package:hnh/domain/entities/event.dart';
 import 'package:hnh/domain/entities/user.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class EventPage extends View {
   final Event event;
@@ -58,9 +58,9 @@ class _EventPageView extends ViewState<EventPage, EventController> {
   Widget buildPage() {
     return Scaffold(
         key: globalKey,
-        body: ModalProgressHUD(
+        body: LoadingOverlay(
             child: getBody(),
-            inAsyncCall: controller.isLoading,
+            isLoading: controller.isLoading,
             color: UIConstants.progressBarColor,
             opacity: 0));
   }

@@ -6,7 +6,7 @@ import 'package:hnh/app/pages/local_places/local_places_tabs.dart';
 import 'package:hnh/app/utils/constants.dart';
 import 'package:hnh/data/repositories/data_local_places_repository.dart';
 import 'package:hnh/device/repositories/device_location_repository.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class LocalPlacesPage extends View {
   LocalPlacesPage({Key key}) : super(key: key);
@@ -30,9 +30,9 @@ class _LocalPlacesPageView
       child: Scaffold(
           drawer: Drawer(elevation: 8.0, child: HHHConstants.drawer),
           appBar: appBar,
-          body: ModalProgressHUD(
+          body: LoadingOverlay(
               child: getBody(),
-              inAsyncCall: controller.isLoading,
+              isLoading: controller.isLoading,
               color: UIConstants.progressBarColor,
               opacity: UIConstants.progressBarOpacity)),
     );
